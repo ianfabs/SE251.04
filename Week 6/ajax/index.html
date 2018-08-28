@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Practical</title>
+	<script src="https://cdn.rawgit.com/ianfabs/25d6655e92578cfb8c1ce91ff4ba0a22/raw/a2a087352a42e5732c341c3e0a41b279189d8c4a/esquery.js"></script>
+	<link rel="stylesheet" href="./main.css">
+	<script src="./main.js" defer></script>
+</head>
+
+<body>
+	<div id="main-content">
+		<section id="database-analyst-area">
+			<h2>Database Analyst</h2>
+			<h3>First Name:<span class="fn"></span></h3>
+			<div class="first"></div>
+			<h3>Last Name:</h3>
+			<div class="last"></div>
+			<h3>Highest Paid Salary</h3>
+			<div class="highest"></div>
+			<h3>Highest Average Paid Salery</h3>
+			<h3 class="average"></h3>
+		</section>
+
+		<section id="web-developer-area">
+			<h2>Web Developer</h2>
+			<h3>First Name:</h3>
+			<div class="first"></div>
+			<h3>Last Name:</h3>
+			<div class="last"></div>
+			<h3>Highest Paid Salary</h3>
+			<div class="highest"></div>
+			<h3>Highest Average Paid Salery</h3>
+			<h3 class="average"></h3>
+		</section>
+
+		<section id="software-engineer-area">
+			<h2>Software Engineer</h2>
+			<h3>First Name:</h3>
+			<div class="first"></div>
+			<h3>Last Name:</h3>
+			<div class="last"></div>
+			<h3>Highest Paid Salary</h3>
+			<div class="highest"></div>
+			<h3>Highest Average Paid Salery</h3>
+			<h3 class="average"></h3>
+		</section>
+	</div>
+	<section id="search-area">
+        <form id="search">
+		    <input type="text" placeholder="Enter A Name" >
+		    
+            <input type="button" id="search-submit" value="search">
+        </form>
+		<section id="search-output">
+			<h2>Search Output</h2>
+			<div class="output">
+				<!--Output search info to here.-->
+				<column> Name </column>
+				<column> Salary </column>
+				<column> Job Title </column>
+			</div>
+		</section>
+	</section>
+
+	<section id="list-area">
+        <section>
+		    <input type="button" value="List Database Analysts" id="list-database-analyst" data-param="Database Analyst">
+		    <input type="button" value="List Web Developers" id="list-web-developer" data-param="Web Developer">
+		    <input type="button" value="List Software Engineers" id="list-software-engineer" data-param="Software Developer">
+        </section>
+        <section id="list-output">
+			<h2>List Output</h2>
+			<div class="output">
+				<!--Output list info to here.-->
+			</div>
+		</section>
+	</section>
+
+</body>
+
+</html>

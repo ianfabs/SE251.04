@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script defer>
+        let a = String('hello');
+        let b = Number(10);
+        let c = Boolean(true);
+
+        let add = (d,e)=>{ return d+e;}
+
+        let array = [];
+
+        for(i=0;i<=100;i++){
+            //array[i] = i+1;
+            array[i] = {
+                index: i+1
+            };
+
+            if(array[i].index % 2 === 0 && array[i].index % 3 !== 0){
+                //array[i] = "fizz";
+                array[i].label = "fizz";
+            }else if(array[i].index % 3 === 0 && array[i].index % 2 !== 0){
+                array[i].label = "buzz";
+            }else if(array[i].index % 3 === 0 && array[i].index % 2 === 0){
+                array[i].label = "fizz buzz";
+            }
+        }
+        console.log(`a : ${typeof(a)}`);
+        console.log(`b : ${typeof(b)}`);
+        console.log(`c : ${typeof(c)}`);
+        
+        console.log(`sum : 5 + 2 = ${add(5,2)}`);
+
+        console.log(array);
+    </script>
+    
+</head>
+<body>
+    <p>Ian Fabricatore</p>
+</body>
+</html>

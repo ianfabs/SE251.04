@@ -1,0 +1,130 @@
+@charset "utf-8";
+/* CSS Document */
+/*
+    COLORS
+    Indepednance Blue - 495867
+    Fuzzy Wuzzy Pink  - CE796B
+    Pastel Pink       - E7AD99
+    Deer Yellow       - C18C5D
+    Desert Sand       - ECC8AF
+*/
+#form 
+{
+    width: 600px;
+    background: #495867;
+    color: #CE796B;
+    padding: 2vh 2.5vw;
+    font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+input{
+    background: rgba(236, 200, 175, 0.7);
+    border: 0;
+    box-shadow: 0px 2px 8px -1px #C18C5D;
+    padding: 0.6vh 1vw;
+    border-radius: 4px;
+    color: #CE796B;
+    font-weight: bold;
+    font-size: 1.6em;
+    transition: box-shadow 0.5s, transform 0.2s ease-in-out;
+    margin-top: 1vh;
+}
+input:focus{
+    outline: none;
+    box-shadow: 0px 2px 20px 1px #C18C5D;
+    transform: translateY(-2px);
+}
+input[type="button"]{
+    margin-top: 3vh;
+    margin-bottom: 2vh;
+    transition: box-shadow 0.5s, transform 0.1s ease-in-out;
+}
+input[type="button"]:hover{
+    box-shadow: 0px 0px 50px 1px rgba(193, 140, 93, 0.74);
+    transform: translateY(-2px);
+}
+input[type="button"]:active{
+    transform: translateY(2px);
+}
+input[type="button"]:active::after{
+    transform: translateY(-2px);
+}
+
+#confirmation
+{
+    width: 635px;
+    /*visibility: hidden;*/
+    border: 0px solid black;
+    margin-top: 10px;
+
+}
+#info{
+    padding: 0vh 2vw;
+}
+/*
+    ALERT COLORS
+    DarkSeaGreen   - #8FBA90
+    FuzzyWuzzyPink - #CE796B
+    Vanilla      - #F4E6A1
+    DarkYellow - A58100
+*/
+.msg{
+    padding-top: 15px;
+    padding-left: 20px;
+    padding-bottom: 10px;
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: row;
+    border-radius: 15px;
+    margin-bottom: 1vh;
+    box-shadow: 0px 3px 10px -1px #495867;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+.msg:hover{
+    transform: translateY(-4px);
+    box-shadow: 0px 5px 10px -1px #495867;
+}
+.msg > .body > .title{
+    font-weight: bold;
+    font-size: 1.2em;
+}
+.msg  > .icon{
+    font-size: 3em;
+    margin-right: 2vw;
+    transform: translateY(-5px);
+}
+.msg > .body > .content{
+    line-height: 4vh;
+    text-indent: 0.35ch;
+}
+.okay{
+    background: #8FBA90;
+    color: #216B22;
+}
+.okay .icon::after{
+    content: "\2713" !important;
+}
+.warn{
+    background: #F4E6A1;
+    color: #A58100;
+}
+.warn .icon::after{
+    content: "\26A0" !important;
+}
+.err{
+    background: #CE796B;
+    color: #7F1827;
+}
+.err .icon::after{
+    content: "\2620" !important;
+}
+
+/*
+    French Flag Colors
+    A63446
+    FBFEF9
+    0C6291
+*/

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.rawgit.com/ianfabs/25d6655e92578cfb8c1ce91ff4ba0a22/raw/619e56c7cb027c06d13acfc658dfaf83e73b7037/esquery.min.js"></script>
+    <link rel="stylesheet" href="main.css">
+    <script src="./calendar.js" defer></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Availability Calendar</h1>
+        <label>Month:</label>
+        <select id="month">
+            <option value="1" selected>January</option>
+            <option value="2">February</option>
+            <option value="3">March</option>
+            <option value="4">April</option>
+            <option value="5">May</option>
+            <option value="6">June</option>
+            <option value="7">July</option>
+            <option value="8">August</option>
+            <option value="9">September</option>
+            <option value="10">October</option>
+            <option value="11">November</option>
+            <option value="12">December</option>
+        </select>
+
+        <label>Year:</label>
+        <select id="year" style="margin-bottom: 10px;">
+            <option value="2016">2016</option>
+            <option value="2017">2017</option>
+            <option value="2018" selected>2018</option>
+        </select>
+        <br />
+        <sup>*click to toggle between available and not available, *doubleclick to un-specify</sup>
+    </div>
+
+    <div id="calendar" class="calendar">
+    </div>
+
+    <div class="buttons">
+        <button id="allAvailable">All Available</button>
+        <button id="allUnavailable">All Unavailable</button>
+    </div>
+</body>
+</html>
