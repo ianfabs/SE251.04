@@ -57,13 +57,15 @@
 
 	// Counts elements in array
 	$indexCount=count($dirArray);
-
+	
 	// Sorts files
 	sort($dirArray);
 
 	// Loops through the array of files
 	for($index=0; $index < $indexCount; $index++) {
-
+		if($dirArray[$index]=="index.php"){
+			array_splice($dirArray, $index, 1 );
+		}
 	// Decides if hidden files should be displayed, based on query above.
 	    if(substr("$dirArray[$index]", 0, 1)!=$hide) {
 
@@ -78,7 +80,8 @@
 	// Gets Date Modified
 		$modtime=date("M j Y g:i A", filemtime($dirArray[$index]));
 		$timekey=date("YmdHis", filemtime($dirArray[$index]));
-
+	
+		
 
 	// Separates directories, and performs operations on those directories
 		if(is_dir($dirArray[$index]))
@@ -99,9 +102,18 @@
 				if($name=="."){$name=". (Current Directory)"; $extn="&lt;System Dir&gt;"; $favicon=" style='background-image:url($namehref/.favicon.ico);'";}
 				if($name==".."){$name=".. (Parent Directory)"; $extn="&lt;System Dir&gt;";}
 		}
+		if($name == ".index.css"){
+			echo $name;
+			array_splice($dirArray, array_search($name), 1 );
+		}
+		if($name == ".index.js"){
+			echo $name;
+			array_splice($dirArray, array_search($name), 1 );
+		}
 
 	// File-only operations
 		else{
+			
 			// Gets file extension
 			$extn=pathinfo($dirArray[$index], PATHINFO_EXTENSION);
 

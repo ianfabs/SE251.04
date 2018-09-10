@@ -6,20 +6,23 @@ f(target, {
 })
   .then(res => res.json())
   .then(people => {
+    console.log(people.filter(peep => peep.name.first == "Johnson"))
     let dbas = people.filter(prsn => prsn.jobTitle == "Database Analyst");
     let wds = people.filter(prsn => prsn.jobTitle == "Web Developer");
     let swds = people.filter(prsn => prsn.jobTitle == "Software Developer");
     let highest = {};
     let reducer = (accumulator, currentVal) => accumulator + currentVal;
-    for (let i = 0; i < dbas.length - 1; i++) {
+    dbas.sort( (a,b) => ( ( Number(a["salary"]) < Number(b["salary"]) ) ? -1 : ( ( Number(a["salary"]) > Number(b["salary"]) ) ? 1 : 0 ) ) );
+    for (let i = 0; i < dbas.length -1; i++) {
       let dba = dbas[i];
       if (Number(dba.salary) < Number(dbas[i + 1].salary)) {
         highest.dba = dbas[i + 1];
       } else {
-        highest.dba = dba;
+        highest.wd = dba;
       }
     }
     highest.dba.average = Math.ceil(dbas.map(el => Number(el.salary)).reduce(reducer) / dbas.length);
+    wds.sort( (a,b) => ( ( Number(a["salary"]) < Number(b["salary"]) ) ? -1 : ( ( Number(a["salary"]) > Number(b["salary"]) ) ? 1 : 0 ) ) );
     for (let i = 0; i < wds.length - 1; i++) {
       let wd = wds[i];
       if (Number(wd.salary) < Number(wds[i + 1].salary)) {
@@ -29,6 +32,7 @@ f(target, {
       }
     }
     highest.wd.average = Math.ceil(wds.map(el => Number(el.salary)).reduce(reducer) / wds.length);
+    swds.sort( (a,b) => ( ( Number(a["salary"]) < Number(b["salary"]) ) ? -1 : ( ( Number(a["salary"]) > Number(b["salary"]) ) ? 1 : 0 ) ) );
     for (let i = 0; i < swds.length - 1; i++) {
       let swd = swds[i];
       if (Number(swd.salary) < Number(swds[i + 1].salary)) {
@@ -38,6 +42,15 @@ f(target, {
       }
     }
     highest.swd.average = Math.ceil(swds.map(el => Number(el.salary)).reduce(reducer) / swds.length);
+    highest.average = ( 
+      (highest.dba.average > highest.wd.average)&&(highest.dba.average > highest.swd.average) 
+      ? highest.dba.average 
+      : ( (highest.wd.average > highest.swd.average)&&(highest.wd.average > highest.dba.average) )
+        ? highest.wd.average
+        : (( (highest.swd.average > highest.wd.average)&&(highest.swd.average > highest.dba.average) ))
+          ? highest.swd.average
+          : 0
+    ); 
     let jobs = ["dba", "wd", "swd"];
     let $jobs = qs("#main-content").children;
     for (i in $jobs) {
@@ -46,6 +59,9 @@ f(target, {
         qs(".last").innerHTML = highest[jobs[i]].name.last;
         qs(".highest").innerHTML = `\$${highest[jobs[i]].salary}`;
         qs(".average").innerHTML = `\$${highest[jobs[i]].average}`;
+        if(highest[jobs[i]].average == highest.average){
+          qs(".average").style.background = "#dfef00";
+        }
       }
     }
   });
