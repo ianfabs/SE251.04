@@ -72,7 +72,7 @@ Array.prototype.forEach.call(qs("#search").children, element => {
       method: "GET"
     }).then(res => res.json())
       .then(res => {
-        let results = res.filter(person => (`${person.name["first"]} ${person.name["last"]}`).match(e.target.value))
+        let results = res.filter(person => (`${person.name["first"]} ${person.name["last"]}`).match(e.target.value) )
         //console.log(results)
         while (qs("#search").nextElementSibling.qs(".output").firstChild) {
           qs("#search").nextElementSibling.qs(".output").removeChild(qs("#search").nextElementSibling.qs(".output").firstChild) 
