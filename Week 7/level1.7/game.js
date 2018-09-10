@@ -105,7 +105,7 @@ for (var i = 0; i < 50; i++) {
     s[i].vy = Math.random() * 20 -10;
     s[i].vx = Math.random() * 20 -10;
     s[i].w = 10;
-    s[i].h = 20;
+    s[i].h = 10;
     s[i].radius = 20;
 }
 examples[3] = function () {
@@ -140,7 +140,7 @@ examples[4] = function () {
             s[i].vx = -s[i].vx;
             s[i].color = colors[ Math.ceil( Math.random() * colors.length ) ]
         }
-        if (s[i].x <= 0 + s[i].radius * 2) {
+        if (s[i].x <= 0 + s[i].radius) {
             s[i].vx = -s[i].vx;
             s[i].color = colors[ Math.ceil( Math.random() * colors.length ) ]
         }
@@ -148,7 +148,7 @@ examples[4] = function () {
             s[i].vy = -s[i].vy;
             s[i].color = colors[ Math.ceil( Math.random() * colors.length ) ]
         }
-        if (s[i].y <= 0 + s[i].radius * 2) {
+        if (s[i].y <= 0 + s[i].radius) {
             s[i].vy = -s[i].vy;
             s[i].color = colors[ Math.ceil( Math.random() * colors.length ) ]
         }
@@ -161,5 +161,5 @@ examples[4] = function () {
 
 function main() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    examples[3]();
+    examples[4]();
 }
