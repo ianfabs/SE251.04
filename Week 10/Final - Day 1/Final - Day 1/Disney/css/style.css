@@ -1,0 +1,10 @@
+
+@import url('https://fonts.googleapis.com/css?family=Pacifico');
+
+#wrapper{margin:0 auto 0 auto; width:300px;}
+nav{width:100%; text-align:center;}
+nav input{display:inline-block; margin:24px;}
+section{text-align:center;}
+section h1{font-family:'Pacifico', cursive; color:#0089bf; font-size:36px; }
+section h2{font-family:'Pacifico', cursive; color:#0089bf; font-size:24px; }
+section q{color:#555555;font-size:18px;}
