@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Q1 - Random Grid</title>
+	<script src="jquery-3.2.1.js"></script>
+	<style type="text/css">
+		.num { border-style: solid; border-width: 1px; width:25px; height: 25px; 
+		 float: left; margin-left: 2px;}
+		 #contents {height: 300px;}
+		 #colorMeGreen {background-color: #4CAF50;}
+		 #colorMeRed {background-color: red;color:white;}
+		 #colorMeBlue {background-color: blue;color:white;}
+		 
+		 .colorMe {width: 150px;}
+		 .colorValue {width: 20px;}
+	</style>
+</head>
+
+<body>
+    <div style="margin-left: 50px; margin-top:50px; width: 290px;">
+		<h2>Question 1 - Random Grid</h2>
+		<div id="contents">
+			
+		</div>
+		<div id="buttons">
+			<input type="text" value="3" id="greenText" class="colorValue"/>
+			<input type="button" 
+			value="Color Me Green" 
+			id="colorMeGreen" 
+			class="colorMe" 
+			data-color="green"
+			data-assoc-input="#greenText"
+			/>
+			<br />
+			<input type="text" value="5" id="redText" class="colorValue"/>
+			<input type="button" value="Color Me Red" id="colorMeRed" class="colorMe" 
+			data-color="red"
+			data-assoc-input="#redText"
+			/>
+			<br />
+			<input type="text" value="7" id="blueText" class="colorValue"/>
+			<input type="button" value="Color Me Blue" id="colorMeBlue" class="colorMe" 
+			data-color="blue"
+			data-assoc-input="#blueText"
+			><br />
+		</div>
+    </div>
+</body>
+
+</html>
+
+<script>
+
+	function  randomNumber (min, max)
+	{
+		return Math.floor (Math.random() * (max - min + 1)) + min;
+	}
+	
+	$(document).ready (function (e) {
+		var str = "";
+		for (i=0; i<100; i++) {
+			str += "<div id=div_" + i + " class='num'>";
+			str += randomNumber (1, 10);
+			str += "</div>";
+		}
+		$("#contents").html (str);
+	});
+
+	function changeAllThatHave(num, toColor){
+		let nums = document.querySelector("#contents").children;
+
+		//<quick-explaination>
+		//	So, I noticed this a while ago, that the `.children` property
+		//    of a DOM Node is NOT of complete type Array, but it is of Complete type Symbol.iterator
+		//	  and a complete type of NodeList, which doesn't(?) inherit from the Array type(also ?)
+		//	  this behavior is odd, as it prevents the use of common Array functions like `filter`
+		//	  and `map`, the work around is using Array.from(<Iterable> itrbl) because NodeList's
+		//	  prototype extends or is compatible with Symbol.iterator.
+		//</quick-explaination>
+
+		function* filteredNums(arr, filter_val) {
+			yield* Array.from(arr).filter(num=>num.textContent == filter_val);
+		}
+		for(num of filteredNums(nums, num)){
+			num.style.background = toColor;
+		}
+	}
+
+	$(document).ready( function(e){
+		/* let btnGreen = $("#colorMeGreen");
+		let greenNumber = $("#greenText");
+		btnGreen.on('click', (e)=>{
+			changeAllThatHave(greenNumber.val(), btnGreen.attr("data-color"))
+		}); */
+		let buttons = $("[type=button]");
+		buttons.on('click', (e)=>{
+			changeAllThatHave( $( $(e.target).attr("data-assoc-input") ).val(), $(e.target).attr("data-color") )
+		})
+	} );
+	
+</script>
